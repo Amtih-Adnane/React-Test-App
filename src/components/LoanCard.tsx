@@ -83,9 +83,9 @@ function LoanCard() {
     }
     setMonthsNumber(readingValue);
     setAmountMonthlyPrice(readingValue / loanAmount);
-    const adna = calculateTargetMonth(readingValue);
-    setTargetMonth(adna);
-    console.log(adna);
+    const calcDate = calculateTargetMonth(readingValue);
+    setTargetMonth(calcDate);
+    console.log(calcDate);
   };
   const handleMonthsNumberIncrement = () => {
     if (
@@ -100,6 +100,8 @@ function LoanCard() {
       const increment = Number(monthsNumber) + 1;
       setAmountMonthlyPrice(loanAmount / increment);
       setMonthsNumber(increment);
+      const calcDate = calculateTargetMonth(increment);
+      setTargetMonth(calcDate);
     }
   };
   const handleMonthsNumberDecrement = () => {
@@ -115,6 +117,8 @@ function LoanCard() {
       const decrement = Number(monthsNumber) - 1;
       setAmountMonthlyPrice(loanAmount / decrement);
       setMonthsNumber(decrement);
+      const calcDate = calculateTargetMonth(decrement);
+      setTargetMonth(calcDate);
     }
   };
   const calculateTargetMonth = (monthsNumber: any) => {
