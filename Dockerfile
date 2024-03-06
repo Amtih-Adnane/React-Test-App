@@ -9,6 +9,6 @@ EXPOSE 5001
 
 WORKDIR /app
 
-COPY . . 
+COPY . .
 CMD ["npm", "run", "dev"]
 

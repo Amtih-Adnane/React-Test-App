@@ -25,6 +25,18 @@ function LoanCard() {
   const [maxLoanAmountError, setMaxLoanAmountError] = useState(false);
   const [maxTenureError, setMaxTenureError] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  // Fetching data
+  useEffect(() => {
+    fetch("./products.json")
+      .then((response) => response.json())
+      .then((products) => {
+        setLoading(false);
+        console.log(products);
+        setData(products);
+      })
+      .catch((error) => console.error("Error loading JSON:", error));
+  }, []);
   // Methods
   const handleSelectLoan = (imageId: any) => {
     setSelectedImageId(imageId);
@@ -61,7 +73,6 @@ function LoanCard() {
       Number(readingValue) + Number(readingValue) * productInterest
     );
   };
-
   // Months number
   const handleMonthsNumberChange = (event: any) => {
     const readingValue = event.target.value;
@@ -126,17 +137,7 @@ function LoanCard() {
 
     return `${formattedTarget}`;
   };
-  // Fetching data
-  useEffect(() => {
-    fetch("./products.json")
-      .then((response) => response.json())
-      .then((products) => {
-        setLoading(false);
-        console.log(products);
-        setData(products);
-      })
-      .catch((error) => console.error("Error loading JSON:", error));
-  }, []);
+  // Loading part
   if (loading) {
     return <div>Loading ....</div>;
   }
