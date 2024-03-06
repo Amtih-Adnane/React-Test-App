@@ -57,9 +57,7 @@ input[type=number] {
 @media (max-width :640px) {
   .card-container{
     width: 360px;
-  }
-  
-  
+  }  
 }
 .card-container .icon-container{
   width: 69px;
